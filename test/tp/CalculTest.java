@@ -1,7 +1,11 @@
 package tp;
 
+
 import static org.junit.Assert.*;
+
 import org.junit.Test;
+
+import tp.Calcul;
 
 import java.util.concurrent.ExecutionException;
 
@@ -61,7 +65,7 @@ public class CalculTest {
     }
 
     @Test
-    public void futureTest() throws ExecutionException, InterruptedException {
+    public void futureTest() throws Exception {
 
 
         Calcul calcul = new Calcul();
@@ -71,3 +75,4 @@ public class CalculTest {
         assertTrue(calcul.future(a, b)==10);
     }
 }
+

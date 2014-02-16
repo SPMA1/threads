@@ -20,17 +20,36 @@ public class CommentApplication {
             }
         };
 
-
-        Thread counterThread = new Thread() {
+        
+        
+        Thread counterThread = new Thread(){
             @Override
             public void run() {
+                System.out.println("Starting counterThread");
+                try {
+                    synchronized (writer){
+                        System.out.println("Counter waits gently()");
+                        writer.wait();
+                        System.out.println("we have " + counter.fastCount() + " comments");
+                    }
 
-                System.out.println("looks we have " + counter.fastCount() + " comments");
-
-
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
             }
         };
+
+//        Thread counterThread = new Thread() {
+//            @Override
+//            public void run() {
+//
+//                System.out.println("looks we have " + counter.fastCount() + " comments");
+//
+//
+//
+//            }
+//        };
 
         writerThread.start();
         counterThread.start();

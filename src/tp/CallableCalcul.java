@@ -20,15 +20,21 @@ import java.util.concurrent.Callable;
 public class CallableCalcul implements Callable<Integer>{
 
     int max;
+    int result = 0;
 
 
-    public CallableCalcul(int max) {
+    public CallableCalcul(int max) throws Exception {
         this.max = max;
+//        call();
     }
 
     @Override
     public Integer call() throws Exception {
         //calcul
-        return null;  //TODO : auto generated
+    	for(int i = max; i>0; i--){
+    	 	result = result + i;
+    	}
+   
+        return result;  
     }
 }
